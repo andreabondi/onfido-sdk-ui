@@ -153,6 +153,13 @@ const getNonPassportFrontDocumentCaptureFlow = (
   if (hasPreselectedDocument && !showCountrySelection) {
     return frontCaptureComponents
   }
+  if (
+    !hasPreselectedDocument &&
+    !showCountrySelection &&
+    showCountrySelection !== undefined
+  ) {
+    return [SelectIdentityDocument, ...frontCaptureComponents]
+  }
   return [SelectIdentityDocument, CountrySelector, ...frontCaptureComponents]
 }
 
